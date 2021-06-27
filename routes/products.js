@@ -11,6 +11,10 @@ var logger = function (req, res, next) {
 
 router.get('/', function (req, res) {
 	Product.find({}, function(err, products){
+		
+		if(err){
+			return next(err);
+		}
 		res.status(200).send( products);
 	});
 });
@@ -38,6 +42,15 @@ router.delete('/:id', logger, function (req, res) {
 	Product.deleteOne({_id: req.params.id}, function (err) {
 		res.status(204).send();
 	});
+});                                                        
+
+router.use(function (err, req, res, next) {
+	console.info(err);
+	if(req.app.get('env') !== 'development'){
+		delete err.stack;
+	}
+	
+	res.status(err.statusCode || 500).json(err);
 });
 
 module.exports = router;
