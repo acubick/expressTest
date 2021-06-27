@@ -3,6 +3,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var mongoose = require('./configs/mongo')
 var sassMiddleware = require('node-sass-middleware');
 
 var indexRouter = require('./routes/index');

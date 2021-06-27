@@ -12,6 +12,7 @@
     "faker": "^5.5.3",
     "hbs": "~4.0.4",
     "http-errors": "~1.6.3",
+    "mongoose": "^5.12.15",
     "morgan": "~1.9.1",
     "node-sass-middleware": "0.11.0"
   }
