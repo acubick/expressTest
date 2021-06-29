@@ -6,11 +6,18 @@ var logger         = require('morgan');
 var mongoose       = require('./configs/mongo');
 var sassMiddleware = require('node-sass-middleware');
 
+
+var passport = require('passport');
+require('./configs/passport.config')(passport);
+
 var indexRouter    = require('./routes/index');
 var usersRouter    = require('./routes/users');
 var productsRouter = require('./routes/products');
 
 var app = express();
+
+
+app.use(passport.initialize());
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
